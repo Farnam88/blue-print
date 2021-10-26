@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using TestAssignment.Utilities.Common.Data;
@@ -10,29 +9,7 @@ using TestAssignment.Utilities.Extensions;
 
 namespace TestAssignment.WebApi.Helpers.Attributes
 {
-    public class ValidRequestFilerAttribute : Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute
-    {
-        #region Overrides of ActionFilterAttribute
-
-        public override void OnActionExecuting(ActionExecutingContext context)
-        {
-            if (!context.ModelState.IsValid)
-            {
-                var result = ResultModel<object>.InvalidRequest();
-                
-                context.Result = new ObjectResult(result)
-                {
-                    StatusCode = result.ErrorCode.ToStatusCode()
-                };
-                context.ModelState.Clear();
-                base.OnActionExecuting(context);
-            }
-        }
-
-        #endregion
-    }
-
-    public class ExceptionHandlerFilterAttribute : ExceptionFilterAttribute
+    public sealed class ExceptionHandlerFilterAttribute : ExceptionFilterAttribute
     {
         private readonly IDictionary<Type, Action<ExceptionContext>> _handlers;
 

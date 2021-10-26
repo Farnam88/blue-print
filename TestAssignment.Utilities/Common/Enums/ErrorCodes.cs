@@ -2,9 +2,10 @@ namespace TestAssignment.Utilities.Common.Enums
 {
     public enum ErrorCodes
     {
-        NotFound,
-        InvalidRequest,
-        InternalServerError,
-        ObjectNull
+        Success=200,
+        NotFound=404,
+        InvalidRequest=400,
+        InternalServerError=500,
+        ObjectNull=505
     }
 }

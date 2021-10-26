@@ -1,24 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using TestAssignment.Utilities.Exceptions;
-using TestAssignment.WebApi.Helpers.Attributes;
+using TestAssignment.WebApi.Controllers.Bases;
 
 namespace TestAssignment.WebApi.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
-    [ServiceFilter(typeof(ValidRequestFilerAttribute))]
-    public class TestController : ControllerBase
+    public class TestController : BaseController
     {
-        private readonly ILogger<TestController> _logger;
-
-        public TestController(ILogger<TestController> logger)
+        public TestController(ILogger<TestController> logger) : base(logger)
         {
-            _logger = logger;
         }
 
         [HttpGet]
@@ -34,6 +26,7 @@ namespace TestAssignment.WebApi.Controllers
         [HttpPost]
         public IActionResult ValidationTest(ValidationTestDto input)
         {
+            Logger.LogInformation("Ok Result");
             return Ok(input);
         }
     }

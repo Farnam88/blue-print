@@ -1,16 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using TestAssignment.Utilities.Common.Data;
+using TestAssignment.Utilities.Extensions;
 using TestAssignment.WebApi.Helpers.Attributes;
 
 namespace TestAssignment.WebApi
@@ -27,11 +32,9 @@ namespace TestAssignment.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ValidRequestFilerAttribute>();
             services.AddControllers(options =>
             {
                 options.Filters.Add<ExceptionHandlerFilterAttribute>();
-                options.Filters.Add<ValidRequestFilerAttribute>();
             });
             services.AddSwaggerGen(c =>
             {

@@ -17,14 +17,7 @@ namespace TestAssignment.Utilities.Extensions
 
         public static int ToStatusCode(this ErrorCodes errorCode)
         {
-            return errorCode switch
-            {
-                ErrorCodes.NotFound => 404,
-                ErrorCodes.InternalServerError => 500,
-                ErrorCodes.ObjectNull => 500,
-                ErrorCodes.InvalidRequest => 400,
-                _ => 500
-            };
+            return (int) errorCode;
         }
     }
 }

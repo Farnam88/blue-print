@@ -46,13 +46,13 @@ namespace TestAssignment.Utilities.Common.Data
         /// <summary>
         /// Creates Success Result
         /// </summary>
-        /// <param name="errorCode">Error Code</param>
         /// <param name="message">Success Message</param>
         /// <param name="result">Result Object(Optional)</param>
         /// <returns>ResultModel</returns>
-        public static ResultModel<TOutput> Success(ErrorCodes errorCode, string message = "", TOutput result = default!)
+        public static ResultModel<TOutput> Success(string message = "",
+            TOutput result = default!)
         {
-            return new ResultModel<TOutput>(errorCode, message, result);
+            return new ResultModel<TOutput>(ErrorCodes.Success, message, result);
         }
 
         /// <summary>
@@ -62,7 +62,8 @@ namespace TestAssignment.Utilities.Common.Data
         /// <param name="message">Error Message</param>
         /// <param name="info">Error Info(Optional)</param>
         /// <returns>ResultModel</returns>
-        public static ResultModel<TOutput> Fail(ErrorCodes errorCode, string message,
+        public static ResultModel<TOutput> Fail(ErrorCodes errorCode = ErrorCodes.InternalServerError,
+            string message = "",
             IDictionary<string, string> info = null!)
         {
             return new ResultModel<TOutput>(errorCode, message, info);
@@ -89,7 +90,7 @@ namespace TestAssignment.Utilities.Common.Data
         public static ResultModel<TOutput> InvalidRequest(string message = ErrorMessages.InvalidRequest,
             IDictionary<string, string> info = null!)
         {
-            return new ResultModel<TOutput>(ErrorCodes.NotFound, message, info);
+            return new ResultModel<TOutput>(ErrorCodes.InvalidRequest, message, info);
         }
 
         /// <summary>
@@ -101,7 +102,7 @@ namespace TestAssignment.Utilities.Common.Data
         public static ResultModel<TOutput> ServerError(string message = ErrorMessages.InternalServerError,
             IDictionary<string, string> info = null!)
         {
-            return new ResultModel<TOutput>(ErrorCodes.NotFound, message, info);
+            return new ResultModel<TOutput>(ErrorCodes.InternalServerError, message, info);
         }
 
         /// <summary>
@@ -113,7 +114,7 @@ namespace TestAssignment.Utilities.Common.Data
         public static ResultModel<TOutput> ObjectNull(string message = ErrorMessages.ObjectNull,
             IDictionary<string, string> info = null!)
         {
-            return new ResultModel<TOutput>(ErrorCodes.NotFound, message, info);
+            return new ResultModel<TOutput>(ErrorCodes.ObjectNull, message, info);
         }
     }
 }
