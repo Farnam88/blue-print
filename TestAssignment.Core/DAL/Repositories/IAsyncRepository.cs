@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Ardalis.Specification;
@@ -8,7 +6,7 @@ using TestAssignment.Models.CommonEntities;
 
 namespace TestAssignment.Core.DAL.Repositories
 {
-    public interface IRepository<TEntity> where TEntity : EntityBase
+    public interface IAsyncRepository<TEntity> where TEntity : BaseEntity
     {
         /// <summary>
         /// Get Entity by Id
@@ -63,7 +61,7 @@ namespace TestAssignment.Core.DAL.Repositories
         /// <param name="cancellationToken">CancellationToken</param>
         /// <typeparam name="TResult">Expected Dto result</typeparam>
         /// <returns>Task of Dto object set</returns>
-        Task<IList<TResult>> GetAllAsync<TResult>(ISpecification<TEntity, TResult> spec,
+        Task<IList<TResult>> ToListAsync<TResult>(ISpecification<TEntity, TResult> spec,
             CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -72,7 +70,7 @@ namespace TestAssignment.Core.DAL.Repositories
         /// <param name="spec">an implementation of ISpecification</param>
         /// <param name="cancellationToken">CancellationToken</param>
         /// <returns>Task of Entity set</returns>
-        Task<IList<TEntity>> GetAllAsync(ISpecification<TEntity> spec, CancellationToken cancellationToken = default);
+        Task<IList<TEntity>> ToListAsync(ISpecification<TEntity> spec, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Count the records

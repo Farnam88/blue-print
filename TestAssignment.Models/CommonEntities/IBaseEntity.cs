@@ -1,6 +1,6 @@
 ﻿namespace TestAssignment.Models.CommonEntities
 {
-    public interface IEntityBase
+    public interface IBaseEntity
     {
         int Id { get; set; }
     }

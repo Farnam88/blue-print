@@ -1,0 +1,29 @@
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
+using TestAssignment.Core.Infrastructure.Modules;
+using TestAssignment.WebApi.Helpers.Attributes;
+
+namespace TestAssignment.WebApi.Modules
+{
+    public static class DiRegistry
+    {
+        public static void RegisterDependencies(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.RegisterApiDependencies()
+                .RegisterCoreDependencies(configuration);
+        }
+
+        private static IServiceCollection RegisterApiDependencies(this IServiceCollection services)
+        {
+            services.AddControllers(options => { options.Filters.Add<ExceptionHandlerFilterAttribute>(); });
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "TestAssignment.WebApi", Version = "v1"});
+            });
+
+            return services;
+        }
+    }
+}

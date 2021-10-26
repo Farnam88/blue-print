@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TestAssignment.Services
+﻿namespace TestAssignment.Services
 {
     public class Class1
     {

@@ -13,6 +13,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\TestAssignment.Core.Infrastructure\TestAssignment.Core.Infrastructure.csproj" />
+      <ProjectReference Include="..\TestAssignment.Core\TestAssignment.Core.csproj" />
       <ProjectReference Include="..\TestAssignment.Utilities\TestAssignment.Utilities.csproj" />
     </ItemGroup>
 

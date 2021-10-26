@@ -10,10 +10,14 @@
 
     <ItemGroup>
       <PackageReference Include="Ardalis.Specification" Version="5.2.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.11" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.11" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\TestAssignment.Models\TestAssignment.Models.csproj" />
+      <ProjectReference Include="..\TestAssignment.Utilities\TestAssignment.Utilities.csproj" />
     </ItemGroup>
 
 </Project>

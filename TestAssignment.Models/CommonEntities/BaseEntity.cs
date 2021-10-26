@@ -1,6 +1,6 @@
 ﻿namespace TestAssignment.Models.CommonEntities
 {
-    public abstract class EntityBase : IEntityBase
+    public abstract class BaseEntity : IBaseEntity
     {
         public int Id { get; set; }
     }
