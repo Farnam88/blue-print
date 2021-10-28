@@ -1,12 +1,14 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace TestAssignment.Core.DataLayer
 {
-    public interface IDbContext
+    public interface IDbContext : IDisposable
     {
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
         int SaveChanges();
@@ -16,5 +18,7 @@ namespace TestAssignment.Core.DataLayer
 
         EntityEntry<TEntity> Entry<TEntity>([NotNull] TEntity entity)
             where TEntity : class;
+
+        public DatabaseFacade Database { get; }
     }
 }

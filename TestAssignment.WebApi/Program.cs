@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using TestAssignment.WebApi.Modules;
 
 namespace TestAssignment.WebApi
 {
@@ -11,6 +12,8 @@ namespace TestAssignment.WebApi
             var hostBuilder = CreateHostBuilder(args);
 
             var host = hostBuilder.Build();
+
+            await host.Services.InitDataBase();
 
             await host.RunAsync();
         }

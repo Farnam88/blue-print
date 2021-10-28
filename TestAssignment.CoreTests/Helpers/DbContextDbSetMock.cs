@@ -1,13 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using Moq;
 
 namespace TestAssignment.CoreTests.Helpers
 {
-    public static class DbContextDbSetMock
+    internal static class DbContextDbSetMock
     {
         public static DbSet<T> GetQueryableDbSet<T>(List<T> sourceList) where T : class
         {
@@ -21,7 +19,7 @@ namespace TestAssignment.CoreTests.Helpers
             return dbSet.Object;
         }
 
-        public static Mock<DbSet<T>> GetQueryableMockDbSet<T>(List<T> sourceList) where T : class
+        public static Mock<DbSet<T>> GetQueryableMockDbSet<T>(this List<T> sourceList) where T : class
         {
             var queryable = sourceList.AsQueryable();
             var dbSet = new Mock<DbSet<T>>();
