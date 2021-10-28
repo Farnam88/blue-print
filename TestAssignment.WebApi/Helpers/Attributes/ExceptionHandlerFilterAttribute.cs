@@ -30,14 +30,13 @@ namespace TestAssignment.WebApi.Helpers.Attributes
             if (!exceptionContext.ModelState.IsValid)
             {
                 HandleInvalidRequestException(exceptionContext);
-                base.OnException(exceptionContext);
             }
             else
             {
                 HandleException(exceptionContext);
-
-                base.OnException(exceptionContext);
             }
+            exceptionContext.ExceptionHandled = true;
+            // base.OnException(exceptionContext);
         }
 
         private void HandleException(ExceptionContext exceptionContext)
@@ -130,7 +129,6 @@ namespace TestAssignment.WebApi.Helpers.Attributes
             {
                 StatusCode = result.ErrorCode.ToStatusCode()
             };
-            exceptionContext.ExceptionHandled = true;
         }
     }
 }

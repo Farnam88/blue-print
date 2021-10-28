@@ -1,8 +1,11 @@
+using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TestAssignment.Models;
 using TestAssignment.WebApi.Helpers;
 using TestAssignment.WebApi.Modules;
 
@@ -31,9 +34,10 @@ namespace TestAssignment.WebApi
             if (_webHostEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestAssignment.WebApi v1"));
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestAssignment WebApi v1"));
 
             app.UseHttpsRedirection();
 

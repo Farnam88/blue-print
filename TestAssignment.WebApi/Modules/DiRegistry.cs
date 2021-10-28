@@ -16,11 +16,16 @@ namespace TestAssignment.WebApi.Modules
 
         private static IServiceCollection RegisterApiDependencies(this IServiceCollection services)
         {
-            services.AddControllers(options => { options.Filters.Add<ExceptionHandlerFilterAttribute>(); });
+            services.AddControllers(options =>
+                {
+                    options.Filters.Add<ExceptionHandlerFilterAttribute>();
+                    options.Filters.Add<ApiValidationFilterAttribute>();
+                })
+                .AddNewtonsoftJson();
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "TestAssignment.WebApi", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "TestAssignment WebApi", Version = "v1"});
             });
 
             return services;

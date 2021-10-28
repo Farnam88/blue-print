@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using TestAssignment.Core.DataLayer;
 using TestAssignment.Core.Infrastructure.DataLayer.EntitiesConfigurations;
+using TestAssignment.Models;
 using TestAssignment.Utilities.Extensions;
 
 namespace TestAssignment.Core.Infrastructure.DataLayer
 {
-    public class TestAssignmentDbContext : DbContext
+    public class TestAssignmentDbContext : DbContext, IDbContext
     {
         public TestAssignmentDbContext(DbContextOptions options) : base(options)
         {

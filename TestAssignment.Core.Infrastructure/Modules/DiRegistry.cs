@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TestAssignment.Core.DAL.Repositories;
+using TestAssignment.Core.DataLayer;
 using TestAssignment.Core.Infrastructure.DAL;
 using TestAssignment.Core.Infrastructure.DataLayer;
 using TestAssignment.Models;
@@ -17,11 +18,17 @@ namespace TestAssignment.Core.Infrastructure.Modules
             Preconditions.CheckNull(services, nameof(IServiceCollection));
             Preconditions.CheckNull(configuration, nameof(IConfiguration));
 
-            services.AddDbContext<TestAssignmentDbContext>(optionBuilder =>
+            services.AddDbContext<IDbContext, TestAssignmentDbContext>(optionBuilder =>
             {
-                optionBuilder.UseInMemoryDatabase(configuration.GetSection("DataBase:Name").Value);
+                var databaseName = configuration.GetSection("DataBase:Name").Value;
+
+                Preconditions.CheckNull(databaseName, "database name");
+
+                optionBuilder.UseInMemoryDatabase(databaseName);
             });
-            
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+
             services.AddScoped<IAsyncRepository<TestAssignmentEntity>, AsyncRepository<TestAssignmentEntity>>();
 
             return services;

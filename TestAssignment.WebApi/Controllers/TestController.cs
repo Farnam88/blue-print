@@ -1,26 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using TestAssignment.Utilities.Exceptions;
+using TestAssignment.Core;
+using TestAssignment.Models;
+using TestAssignment.Utilities.Common.Data;
 using TestAssignment.WebApi.Controllers.Bases;
 
 namespace TestAssignment.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/tests")]
     public class TestController : BaseController
     {
-        public TestController(ILogger<TestController> logger) : base(logger)
+        private readonly IUnitOfWork _uow;
+
+        public TestController(ILogger<TestController> logger, IUnitOfWork uow) : base(logger)
         {
+            _uow = uow;
         }
 
         [HttpGet]
-        public IActionResult Get()
+        [ProducesResponseType(typeof(ResultModel<TestAssignmentEntity>), 200)]
+        public async Task<IActionResult> Get()
         {
-            throw new InvalidRequestException(info: new Dictionary<string, string>
-            {
-                {"Message1", "This is a test"},
-                {"Message2", "Number 1"},
-            });
+            var testAssignment = await _uow.TestAssignmentRepository.FindAsync(1);
+            return Ok(testAssignment);
         }
 
         [HttpPost]

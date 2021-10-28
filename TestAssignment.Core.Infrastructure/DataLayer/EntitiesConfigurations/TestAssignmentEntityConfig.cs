@@ -8,6 +8,8 @@ namespace TestAssignment.Core.Infrastructure.DataLayer.EntitiesConfigurations
     {
         public void Configure(EntityTypeBuilder<TestAssignmentEntity> builder)
         {
+            builder.ToTable("TestAssignmentEntities");
+
             builder.HasKey(k => k.Id);
 
             builder.Property(p => p.Title)

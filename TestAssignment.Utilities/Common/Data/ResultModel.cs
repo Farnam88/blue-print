@@ -4,7 +4,7 @@ using TestAssignment.Utilities.Common.Enums;
 #nullable enable
 namespace TestAssignment.Utilities.Common.Data
 {
-    public sealed class ResultModel<TOutput>
+    public class ResultModel<TOutput>
     {
         /// <summary>
         /// Success Result Constructor
@@ -37,11 +37,11 @@ namespace TestAssignment.Utilities.Common.Data
             Error = new Error(info);
         }
 
-        public ErrorCodes ErrorCode;
-        public string Message;
-        public bool IsSucceeded;
-        public TOutput? Result;
-        public Error? Error;
+        public ErrorCodes ErrorCode { get; }
+        public string Message { get; }
+        public bool IsSucceeded { get; }
+        public TOutput? Result { get; }
+        public Error? Error { get; }
 
         /// <summary>
         /// Creates Success Result
