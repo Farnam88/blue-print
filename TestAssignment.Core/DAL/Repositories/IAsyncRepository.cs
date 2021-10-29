@@ -97,12 +97,6 @@ namespace TestAssignment.Core.DAL.Repositories
         Task AddRangeAsync(IList<TEntity> entities, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Update Entity
-        /// </summary>
-        /// <param name="entity">Entity</param>
-        void Update(TEntity entity);
-
-        /// <summary>
         /// Delete by Id
         /// </summary>
         /// <param name="id">Identifier</param>

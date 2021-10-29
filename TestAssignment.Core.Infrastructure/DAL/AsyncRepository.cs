@@ -90,16 +90,10 @@ namespace TestAssignment.Core.Infrastructure.DAL
             await _dbSet.AddRangeAsync(entities, cancellationToken);
         }
 
-        public void Update(TEntity entity)
-        {
-            Preconditions.CheckNull(entity, "Input entity");
-            _dbContext.Entry(entity).State = EntityState.Modified;
-        }
-
         public async Task DeleteAsync(int id, CancellationToken cancellationToken = default)
         {
             var entity = await FindAsync(id, cancellationToken);
-            _dbContext.Entry(entity).State = EntityState.Deleted;
+            _dbSet.Remove(entity);
         }
 
         public void Delete(TEntity entity)
