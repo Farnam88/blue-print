@@ -1,16 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Moq;
 using TestAssignment.Core.DAL.Repositories;
 using TestAssignment.Core.DataLayer;
 using TestAssignment.Core.Infrastructure.DAL;
 using TestAssignment.CoreTests.Helpers;
-using TestAssignment.CoreTests.Helpers.TestSpecifications;
 using TestAssignment.Models;
 using Xunit;
 
