@@ -28,7 +28,7 @@ namespace TestAssignment.Utilities.Common.Data
         /// <param name="message">Error Message</param>
         /// <param name="info">Error Info(Optional)</param>
         private ResultModel(ErrorCodes errorCode, string message,
-            IDictionary<string, string> info = null!)
+            IList<ErrorDetail> info = null!)
         {
             ErrorCode = errorCode;
             Message = message;
@@ -64,7 +64,7 @@ namespace TestAssignment.Utilities.Common.Data
         /// <returns>ResultModel</returns>
         public static ResultModel<TOutput> Fail(ErrorCodes errorCode = ErrorCodes.InternalServerError,
             string message = "",
-            IDictionary<string, string> info = null!)
+            IList<ErrorDetail> info = null!)
         {
             return new ResultModel<TOutput>(errorCode, message, info);
         }
@@ -76,7 +76,7 @@ namespace TestAssignment.Utilities.Common.Data
         /// <param name="info">Error Info(Optional)</param>
         /// <returns>ResultModel</returns>
         public static ResultModel<TOutput> NotFound(string message = ErrorMessages.NotFound,
-            IDictionary<string, string> info = null!)
+            IList<ErrorDetail> info = null!)
         {
             return new ResultModel<TOutput>(ErrorCodes.NotFound, message, info);
         }
@@ -88,7 +88,7 @@ namespace TestAssignment.Utilities.Common.Data
         /// <param name="info">Error Info(Optional)</param>
         /// <returns>ResultModel</returns>
         public static ResultModel<TOutput> InvalidRequest(string message = ErrorMessages.InvalidRequest,
-            IDictionary<string, string> info = null!)
+            IList<ErrorDetail> info = null!)
         {
             return new ResultModel<TOutput>(ErrorCodes.InvalidRequest, message, info);
         }
@@ -100,7 +100,7 @@ namespace TestAssignment.Utilities.Common.Data
         /// <param name="info">Error Info(Optional)</param>
         /// <returns>ResultModel</returns>
         public static ResultModel<TOutput> ServerError(string message = ErrorMessages.InternalServerError,
-            IDictionary<string, string> info = null!)
+            IList<ErrorDetail> info = null!)
         {
             return new ResultModel<TOutput>(ErrorCodes.InternalServerError, message, info);
         }
@@ -112,7 +112,7 @@ namespace TestAssignment.Utilities.Common.Data
         /// <param name="info">Error Info(Optional)</param>
         /// <returns>ResultModel</returns>
         public static ResultModel<TOutput> ObjectNull(string message = ErrorMessages.ObjectNull,
-            IDictionary<string, string> info = null!)
+            IList<ErrorDetail> info = null!)
         {
             return new ResultModel<TOutput>(ErrorCodes.ObjectNull, message, info);
         }

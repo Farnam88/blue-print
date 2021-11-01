@@ -13,7 +13,7 @@ namespace TestAssignment.UtilitiesTests
         [InlineData(505, ErrorCodes.ObjectNull)]
         [InlineData(507, ErrorCodes.InternalServerError)]
         [InlineData(200, ErrorCodes.Success)]
-        public void ResultModel_ShouldReturnsError_WithRelativeErrorCode(int errorCode, ErrorCodes? expectedResult)
+        public void ResultModel_ShouldReturnsError_WithRelativeErrorCode(int errorCode, ErrorCodes expectedResult)
         {
             //Arrange and Act
             ResultModel<object> result = errorCode switch

@@ -8,7 +8,7 @@ namespace TestAssignment.Utilities.Exceptions
     {
         public InvalidRequestException(
             string message = ErrorMessages.InvalidRequest,
-            IDictionary<string, string> info = null) : base(message, ErrorCodes.InvalidRequest, info)
+            IList<ErrorDetail> info = null) : base(message, ErrorCodes.InvalidRequest, info)
         {
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using TestAssignment.Utilities.Common.Data;
@@ -35,6 +36,7 @@ namespace TestAssignment.WebApi.Helpers.Attributes
             {
                 HandleException(exceptionContext);
             }
+
             exceptionContext.ExceptionHandled = true;
             // base.OnException(exceptionContext);
         }
@@ -54,9 +56,9 @@ namespace TestAssignment.WebApi.Helpers.Attributes
         private void HandleUnknownException(ExceptionContext exceptionContext)
         {
             var result = ResultModel<object>.ServerError("An unhandled exception occurred",
-                new Dictionary<string, string>
+                new List<ErrorDetail>
                 {
-                    {"Exception Message", exceptionContext.Exception.Message}
+                    new ErrorDetail("Exception Message", exceptionContext.Exception.Message)
                 });
 
             SetObjectResult(exceptionContext, result);
@@ -68,7 +70,7 @@ namespace TestAssignment.WebApi.Helpers.Attributes
             var result = ResultModel<object>.ObjectNull(info:
                 exception.AdditionalInfo);
 
-            result.Error?.AdditionalInfo.Add("Exception Message", exception.Message);
+            result.Error?.AdditionalInfo.Add(new ErrorDetail("Exception Message", exception.Message));
 
             SetObjectResult(exceptionContext, result);
         }
@@ -79,37 +81,37 @@ namespace TestAssignment.WebApi.Helpers.Attributes
             var result = ResultModel<object>.NotFound(info:
                 exception.AdditionalInfo);
 
-            result.Error?.AdditionalInfo.Add("Exception Message", exception.Message);
+            result.Error?.AdditionalInfo.Add(new ErrorDetail("Exception Message", exception.Message));
 
             SetObjectResult(exceptionContext, result);
         }
 
         private void HandleInvalidRequestException(ExceptionContext exceptionContext)
         {
-            // var exception = (InvalidRequestException) exceptionContext.Exception;
             if (exceptionContext.Exception is InvalidRequestException invalidRequestException)
             {
                 var result = ResultModel<object>.InvalidRequest(
                     info: invalidRequestException.AdditionalInfo);
 
-                result.Error?.AdditionalInfo.Add("Exception Message", invalidRequestException.Message);
-
                 SetObjectResult(exceptionContext, result);
-
-                exceptionContext.ModelState.Clear();
             }
 
             if (exceptionContext.Exception is ValidationException validationException)
             {
-                // var errors=validationException.
+                var errors = validationException
+                    .Errors?
+                    .Where(f => f != null)
+                    .Select(d => new ErrorDetail(d.PropertyName, d.ErrorMessage))
+                    .ToList();
 
-                var result = ResultModel<object>.InvalidRequest();
-                result.Error?.AdditionalInfo.Add("Exception Message", validationException.Message);
+                var result = errors != null
+                    ? ResultModel<object>.InvalidRequest(info: errors)
+                    : ResultModel<object>.InvalidRequest();
 
                 SetObjectResult(exceptionContext, result);
-
-                exceptionContext.ModelState.Clear();
             }
+
+            exceptionContext.ModelState.Clear();
         }
 
         private void HandleInternalServerErrorException(ExceptionContext exceptionContext)
@@ -118,7 +120,7 @@ namespace TestAssignment.WebApi.Helpers.Attributes
             var result = ResultModel<object>.ServerError("An internal server error occurred",
                 exception.AdditionalInfo);
 
-            result.Error?.AdditionalInfo.Add("Exception Message", exception.Message);
+            result.Error?.AdditionalInfo.Add(new ErrorDetail("Exception Message", exception.Message));
             SetObjectResult(exceptionContext, result);
         }
 

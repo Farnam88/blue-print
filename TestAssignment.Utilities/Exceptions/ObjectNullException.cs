@@ -7,7 +7,7 @@ namespace TestAssignment.Utilities.Exceptions
     public class ObjectNullException : ExceptionBase
     {
         public ObjectNullException(string message = ErrorMessages.ObjectNull,
-            IDictionary<string, string> info = null) : base(message, ErrorCodes.ObjectNull, info)
+            IList<ErrorDetail> info = null) : base(message, ErrorCodes.ObjectNull, info)
         {
         }
     }

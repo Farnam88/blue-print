@@ -7,7 +7,7 @@ namespace TestAssignment.Utilities.Exceptions
     public class NotFoundException : ExceptionBase
     {
         public NotFoundException(string message = ErrorMessages.NotFound,
-            IDictionary<string, string> info = null) : base(
+            IList<ErrorDetail> info = null) : base(
             message, ErrorCodes.NotFound, info)
         {
         }

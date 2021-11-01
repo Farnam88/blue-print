@@ -4,13 +4,38 @@ namespace TestAssignment.Utilities.Common.Data
 {
     public class Error
     {
-        private readonly IDictionary<string, string> _additionalInfo;
+        private readonly IList<ErrorDetail> _additionalInfo;
 
-        public Error(IDictionary<string, string> info = null)
+        public Error(IList<ErrorDetail> info = null)
         {
-            _additionalInfo = info ?? new Dictionary<string, string>();
+            _additionalInfo = info ?? new List<ErrorDetail>();
         }
 
-        public IDictionary<string, string> AdditionalInfo => _additionalInfo;
+        public IList<ErrorDetail> AdditionalInfo => _additionalInfo;
+    }
+
+    public class ErrorDetail
+    {
+        public ErrorDetail(string key, string value)
+        {
+            Key = key;
+            Value = value;
+        }
+
+        public ErrorDetail()
+        {
+            
+        }
+        public string Key { get; set; }
+        public string Value { get; set; }
+
+        #region Overrides of Object
+
+        public override string ToString()
+        {
+            return $"{Key}: {Value}";
+        }
+
+        #endregion
     }
 }

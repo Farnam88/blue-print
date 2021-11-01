@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using TestAssignment.Core.DAL.Repositories;
@@ -11,6 +12,7 @@ namespace TestAssignment.Core.Infrastructure
     public class UnitOfWork : IUnitOfWork
     {
         private readonly IDbContext _context;
+
         private IAsyncRepository<TestAssignmentEntity> _testAssignmentRepository;
 
         public UnitOfWork(IDbContext context)
@@ -25,13 +27,10 @@ namespace TestAssignment.Core.Infrastructure
             await _context.SaveChangesAsync(cancellationToken);
         }
 
-        #region Implementation of IUnitOfWorkRepositories
 
         public IAsyncRepository<TestAssignmentEntity> TestAssignmentRepository
         {
             get { return _testAssignmentRepository ??= new AsyncRepository<TestAssignmentEntity>(_context); }
         }
-
-        #endregion
     }
 }

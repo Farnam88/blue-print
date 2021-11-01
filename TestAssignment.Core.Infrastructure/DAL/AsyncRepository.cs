@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -14,14 +15,12 @@ namespace TestAssignment.Core.Infrastructure.DAL
 {
     public class AsyncRepository<TEntity> : IAsyncRepository<TEntity> where TEntity : BaseEntity
     {
-        private readonly IDbContext _dbContext;
         private readonly DbSet<TEntity> _dbSet;
 
         public AsyncRepository(IDbContext dbContext)
         {
             Preconditions.CheckNull(dbContext, nameof(IDbContext));
 
-            _dbContext = dbContext;
             _dbSet = dbContext.Set<TEntity>();
         }
 

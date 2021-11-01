@@ -16,10 +16,10 @@ namespace TestAssignment.WebApi.Helpers.Attributes
             if (!context.ModelState.IsValid)
             {
                 var errors = context.ModelState.Select(s =>
-                        new KeyValuePair<string, string>(s.Key,
+                        new ErrorDetail(s.Key,
                             string.Join(", ", s.Value.Errors.Select(d => d.ErrorMessage))))
                     .ToList();
-                var result = ResultModel<object>.InvalidRequest(info: new Dictionary<string, string>(errors));
+                var result = ResultModel<object>.InvalidRequest(info: errors);
 
                 context.Result = new ObjectResult(result)
                 {
