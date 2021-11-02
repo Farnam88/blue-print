@@ -37,7 +37,7 @@ namespace TestAssignment.WebApi.Controllers.Bases
 
                 public abstract Task<ActionResult<TResponse>> HandleAsync(
                     TRequest request,
-                    CancellationToken cancellationToken = default(CancellationToken));
+                    [FromRoute]CancellationToken ct = default(CancellationToken));
             }
 
             public abstract class WithoutResponse : BaseController
@@ -48,7 +48,7 @@ namespace TestAssignment.WebApi.Controllers.Bases
 
                 public abstract Task<ActionResult> HandleAsync(
                     TRequest request,
-                    CancellationToken cancellationToken = default(CancellationToken));
+                    [FromRoute] CancellationToken ct = default(CancellationToken));
             }
         }
 
@@ -61,7 +61,7 @@ namespace TestAssignment.WebApi.Controllers.Bases
                 }
 
                 public abstract Task<ActionResult<TResponse>> HandleAsync(
-                    CancellationToken cancellationToken = default(CancellationToken));
+                    [FromRoute]CancellationToken ct = default(CancellationToken));
             }
 
             public abstract class WithoutResponse : BaseController
@@ -71,7 +71,7 @@ namespace TestAssignment.WebApi.Controllers.Bases
                 }
 
                 public abstract Task<ActionResult> HandleAsync(
-                    CancellationToken cancellationToken = default(CancellationToken));
+                    [FromRoute]CancellationToken ct = default(CancellationToken));
             }
         }
     }

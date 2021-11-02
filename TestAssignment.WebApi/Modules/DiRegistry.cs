@@ -28,6 +28,8 @@ namespace TestAssignment.WebApi.Modules
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "TestAssignment WebApi", Version = "v1"});
+                c.EnableAnnotations();
+                // c.SchemaFilter<CustomSchemaFilters>();
             });
 
             return services;

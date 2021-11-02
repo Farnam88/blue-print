@@ -28,9 +28,9 @@ namespace TestAssignment.WebApi.Controllers.TestAssignmentEndpoints
         )]
         [ProducesResponseType(typeof(ResultModel<IList<TestAssignmentDto>>), 200)]
         public override async Task<ActionResult<ResultModel<IList<TestAssignmentDto>>>> HandleAsync(
-            CancellationToken cancellationToken = default(CancellationToken))
+            [FromRoute] CancellationToken ct = default(CancellationToken))
         {
-            var result = await MediatorHandler.Send(new GetTestAssignmentsQuery(), cancellationToken);
+            var result = await MediatorHandler.Send(new GetTestAssignmentsQuery(), ct);
             return result;
         }
     }

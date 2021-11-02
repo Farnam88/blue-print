@@ -12,9 +12,10 @@ using TestAssignment.WebApi.Controllers.Bases;
 namespace TestAssignment.WebApi.Controllers.TestAssignmentEndpoints
 {
     [Route(EndpointsBaseRouteNames.TestAssignment)]
-    public class Create : BaseEndpointController.WithRequest<CreateTestAssignmentCommand>.WithResponse<ResultModel<int>>
+    public class CreateTestAssignment : BaseEndpointController.WithRequest<CreateTestAssignmentCommand>.WithResponse<
+        ResultModel<int>>
     {
-        public Create(IMediator mediator) : base(mediator)
+        public CreateTestAssignment(IMediator mediator) : base(mediator)
         {
         }
 
@@ -27,9 +28,9 @@ namespace TestAssignment.WebApi.Controllers.TestAssignmentEndpoints
         )]
         [ProducesResponseType(typeof(ResultModel<IList<TestAssignmentDto>>), 200)]
         public override async Task<ActionResult<ResultModel<int>>> HandleAsync(CreateTestAssignmentCommand request,
-            CancellationToken cancellationToken = default(CancellationToken))
+            [FromRoute] CancellationToken ct = default(CancellationToken))
         {
-            return await MediatorHandler.Send(request, cancellationToken);
+            return await MediatorHandler.Send(request, ct);
         }
     }
 }

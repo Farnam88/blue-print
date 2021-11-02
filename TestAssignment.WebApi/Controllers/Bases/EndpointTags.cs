@@ -2,7 +2,7 @@ namespace TestAssignment.WebApi.Controllers.Bases
 {
     public class EndpointTagNames
     {
-        public const string TestAssignment = "Test Assignment";
+        public const string TestAssignment = "TestAssignment";
     }
 
     public class EndpointsBaseRouteNames
