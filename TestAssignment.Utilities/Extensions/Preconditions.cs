@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using TestAssignment.Utilities.Common.Data;
+using TestAssignment.Utilities.Exceptions;
 
 namespace TestAssignment.Utilities.Extensions
 {
@@ -9,8 +12,15 @@ namespace TestAssignment.Utilities.Extensions
             if (input is null)
             {
                 if (string.IsNullOrEmpty(name))
-                    throw new ArgumentNullException(message: "input is null", paramName: nameof(input));
-                throw new ArgumentNullException(message: $"{name} is null", paramName: nameof(input));
+                    throw new ObjectNullException(message: "object reference not set to an instance",
+                        new List<ErrorDetail>
+                        {
+                            new(nameof(input), $"{nameof(input)} is null")
+                        });
+                throw new ObjectNullException(message: "object reference not set to an instance", new List<ErrorDetail>
+                {
+                    new(name, $"{name} is null")
+                });
             }
         }
     }
