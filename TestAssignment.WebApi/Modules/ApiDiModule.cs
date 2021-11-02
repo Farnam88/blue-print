@@ -7,13 +7,13 @@ using TestAssignment.WebApi.Helpers.Attributes;
 
 namespace TestAssignment.WebApi.Modules
 {
-    public static class DiRegistry
+    public static class ApiDiModule
     {
         public static void RegisterDependencies(this IServiceCollection services, IConfiguration configuration)
         {
-            services.RegisterApiDependencies()
-                .RegisterCoreDependencies(configuration)
-                .RegisterAServicesDependencies();
+            services.RegisterCoreDependencies(configuration)
+                .RegisterServicesDependencies()
+                .RegisterApiDependencies();
         }
 
         private static IServiceCollection RegisterApiDependencies(this IServiceCollection services)
@@ -29,7 +29,6 @@ namespace TestAssignment.WebApi.Modules
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "TestAssignment WebApi", Version = "v1"});
                 c.EnableAnnotations();
-                // c.SchemaFilter<CustomSchemaFilters>();
             });
 
             return services;

@@ -10,7 +10,7 @@ using TestAssignment.Utilities.Extensions;
 
 namespace TestAssignment.Core.Infrastructure.Modules
 {
-    public static class DiRegistry
+    public static class CoreDiModule
     {
         public static IServiceCollection RegisterCoreDependencies(this IServiceCollection services,
             IConfiguration configuration)
@@ -27,7 +27,7 @@ namespace TestAssignment.Core.Infrastructure.Modules
                 optionBuilder.UseInMemoryDatabase(databaseName);
             });
 
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<IAsyncRepository<TestAssignmentEntity>, AsyncRepository<TestAssignmentEntity>>();
 
