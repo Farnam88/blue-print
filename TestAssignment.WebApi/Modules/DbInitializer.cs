@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using TestAssignment.Core.DataLayer;
+using TestAssignment.Application.Data.Contexts;
 
 namespace TestAssignment.WebApi.Modules
 {

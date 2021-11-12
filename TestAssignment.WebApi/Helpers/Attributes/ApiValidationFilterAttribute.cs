@@ -1,9 +1,9 @@
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using TestAssignment.Utilities.Common.Data;
-using TestAssignment.Utilities.Extensions;
+using TestAssignment.Domain.Common.Data;
+using TestAssignment.Domain.Exceptions;
+using TestAssignment.Domain.Extensions;
 
 namespace TestAssignment.WebApi.Helpers.Attributes
 {
@@ -19,7 +19,7 @@ namespace TestAssignment.WebApi.Helpers.Attributes
                         new ErrorDetail(s.Key,
                             string.Join(", ", s.Value.Errors.Select(d => d.ErrorMessage))))
                     .ToList();
-                var result = ResultModel<object>.InvalidRequest(info: errors);
+                var result = ResultModel<object>.Fail(new InvalidRequestException(info: errors));
 
                 context.Result = new ObjectResult(result)
                 {

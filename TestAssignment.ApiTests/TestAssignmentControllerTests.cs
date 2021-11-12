@@ -1,12 +1,11 @@
-using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Moq;
-using TestAssignment.Services.Contexts.TestAssignmentServices.Dtos;
-using TestAssignment.Services.Contexts.TestAssignmentServices.Queries;
-using TestAssignment.Utilities.Common.Data;
+using TestAssignment.Application.Contexts.TestAssignmentServices.Dtos;
+using TestAssignment.Application.Contexts.TestAssignmentServices.Queries;
+using TestAssignment.Domain.Common.Data;
 using TestAssignment.WebApi.Controllers.TestAssignmentEndpoints;
 using Xunit;
 

@@ -5,7 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="DAL\Repositories" />
+      <Folder Include="DAL" />
     </ItemGroup>
 
     <ItemGroup>
@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TestAssignment.Models\TestAssignment.Models.csproj" />
+      <ProjectReference Include="..\TestAssignment.Domain\TestAssignment.Domain.csproj" />
       <ProjectReference Include="..\TestAssignment.Utilities\TestAssignment.Utilities.csproj" />
     </ItemGroup>
 

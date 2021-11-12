@@ -4,9 +4,9 @@ using System.Linq;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using TestAssignment.Utilities.Common.Data;
-using TestAssignment.Utilities.Exceptions;
-using TestAssignment.Utilities.Extensions;
+using TestAssignment.Domain.Common.Data;
+using TestAssignment.Domain.Exceptions;
+using TestAssignment.Domain.Extensions;
 
 namespace TestAssignment.WebApi.Helpers.Attributes
 {
@@ -55,11 +55,10 @@ namespace TestAssignment.WebApi.Helpers.Attributes
 
         private void HandleUnknownException(ExceptionContext exceptionContext)
         {
-            var result = ResultModel<object>.ServerError("An unhandled exception occurred",
-                new List<ErrorDetail>
-                {
-                    new ErrorDetail("Exception Message", exceptionContext.Exception.Message)
-                });
+            var result = ResultModel<object>.Fail(new InternalServerErrorException(info: new List<ErrorDetail>
+            {
+                new ErrorDetail("Exception Message", exceptionContext.Exception.Message)
+            }));
 
             SetObjectResult(exceptionContext, result);
         }
@@ -67,10 +66,7 @@ namespace TestAssignment.WebApi.Helpers.Attributes
         private void HandleObjectNullException(ExceptionContext exceptionContext)
         {
             var exception = (ObjectNullException) exceptionContext.Exception;
-            var result = ResultModel<object>.ObjectNull(info:
-                exception.AdditionalInfo);
-
-            result.Error?.AdditionalInfo.Add(new ErrorDetail("Exception Message", exception.Message));
+            var result = ResultModel<object>.Fail(exception);
 
             SetObjectResult(exceptionContext, result);
         }
@@ -78,10 +74,7 @@ namespace TestAssignment.WebApi.Helpers.Attributes
         private void HandleNotFoundException(ExceptionContext exceptionContext)
         {
             var exception = (NotFoundException) exceptionContext.Exception;
-            var result = ResultModel<object>.NotFound(info:
-                exception.AdditionalInfo);
-
-            result.Error?.AdditionalInfo.Add(new ErrorDetail("Exception Message", exception.Message));
+            var result = ResultModel<object>.Fail(exception);
 
             SetObjectResult(exceptionContext, result);
         }
@@ -90,8 +83,7 @@ namespace TestAssignment.WebApi.Helpers.Attributes
         {
             if (exceptionContext.Exception is InvalidRequestException invalidRequestException)
             {
-                var result = ResultModel<object>.InvalidRequest(
-                    info: invalidRequestException.AdditionalInfo);
+                var result = ResultModel<object>.Fail(invalidRequestException);
 
                 SetObjectResult(exceptionContext, result);
             }
@@ -105,8 +97,8 @@ namespace TestAssignment.WebApi.Helpers.Attributes
                     .ToList();
 
                 var result = errors != null
-                    ? ResultModel<object>.InvalidRequest(info: errors)
-                    : ResultModel<object>.InvalidRequest();
+                    ? ResultModel<object>.Fail(new InvalidRequestException(info: errors))
+                    : ResultModel<object>.Fail(new InvalidRequestException());
 
                 SetObjectResult(exceptionContext, result);
             }
@@ -117,8 +109,7 @@ namespace TestAssignment.WebApi.Helpers.Attributes
         private void HandleInternalServerErrorException(ExceptionContext exceptionContext)
         {
             var exception = (InternalServerErrorException) exceptionContext.Exception;
-            var result = ResultModel<object>.ServerError("An internal server error occurred",
-                exception.AdditionalInfo);
+            var result = ResultModel<object>.Fail(exception);
 
             result.Error?.AdditionalInfo.Add(new ErrorDetail("Exception Message", exception.Message));
             SetObjectResult(exceptionContext, result);

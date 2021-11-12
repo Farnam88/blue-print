@@ -2,8 +2,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using TestAssignment.Utilities.Common.Data;
-using TestAssignment.Utilities.Extensions;
+using TestAssignment.Domain.Common.Data;
+using TestAssignment.Domain.Extensions;
 
 namespace TestAssignment.WebApi.Controllers.Bases
 {

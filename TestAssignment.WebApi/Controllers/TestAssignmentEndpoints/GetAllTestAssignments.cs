@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using TestAssignment.Services.Contexts.TestAssignmentServices.Dtos;
-using TestAssignment.Services.Contexts.TestAssignmentServices.Queries;
-using TestAssignment.Utilities.Common.Data;
+using TestAssignment.Application.Contexts.TestAssignmentServices.Dtos;
+using TestAssignment.Application.Contexts.TestAssignmentServices.Queries;
+using TestAssignment.Domain.Common.Data;
 using TestAssignment.WebApi.Controllers.Bases;
 
 namespace TestAssignment.WebApi.Controllers.TestAssignmentEndpoints
