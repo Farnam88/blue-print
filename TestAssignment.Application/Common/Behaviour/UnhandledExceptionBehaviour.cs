@@ -26,10 +26,8 @@ namespace TestAssignment.Application.Common.Behaviour
             }
             catch (Exception ex)
             {
-                var requestName = typeof(TRequest).Name;
-
                 _logger.LogError(ex,
-                    "Unhandled Exception for {Name}", requestName);
+                    "Unhandled Exception for {Name}", typeof(TRequest).Name);
                 throw;
             }
         }

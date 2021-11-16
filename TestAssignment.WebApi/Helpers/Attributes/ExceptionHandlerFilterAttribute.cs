@@ -16,6 +16,7 @@ namespace TestAssignment.WebApi.Helpers.Attributes
 
         public ExceptionHandlerFilterAttribute()
         {
+            
             _handlers = new Dictionary<Type, Action<ExceptionContext>>
             {
                 {typeof(InternalServerErrorException), HandleInternalServerErrorException},
@@ -57,7 +58,7 @@ namespace TestAssignment.WebApi.Helpers.Attributes
         {
             var result = ResultModel<object>.Fail(new InternalServerErrorException(info: new List<ErrorDetail>
             {
-                new ErrorDetail("Exception Message", exceptionContext.Exception.Message)
+                new ("Exception Message", exceptionContext.Exception.Message)
             }));
 
             SetObjectResult(exceptionContext, result);

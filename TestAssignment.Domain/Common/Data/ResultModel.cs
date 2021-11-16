@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TestAssignment.Domain.Common.Enums;
+﻿using TestAssignment.Domain.Common.Enums;
 using TestAssignment.Domain.Exceptions;
 
 #nullable enable
