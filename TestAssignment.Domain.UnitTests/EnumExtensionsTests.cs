@@ -1,8 +1,8 @@
 using TestAssignment.Domain.Extensions;
-using TestAssignment.DomainTests.Helpers;
+using TestAssignment.Domain.UnitTests.Helpers;
 using Xunit;
 
-namespace TestAssignment.DomainTests
+namespace TestAssignment.Domain.UnitTests
 {
     public class EnumExtensionsTests
     {

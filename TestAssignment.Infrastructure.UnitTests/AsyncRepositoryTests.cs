@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using Moq;
 using TestAssignment.Application.Data.Contexts;
 using TestAssignment.Application.Data.Repositories;
-using TestAssignment.InfrastructureTests.Helpers;
+using TestAssignment.Infrastructure.UnitTests.Helpers;
 using TestAssignment.Domain.Entities;
 using TestAssignment.Infrastructure.Data.Repositories;
 using Xunit;
 
-namespace TestAssignment.InfrastructureTests
+namespace TestAssignment.Infrastructure.UnitTests
 {
     public class AsyncRepositoryTests
     {

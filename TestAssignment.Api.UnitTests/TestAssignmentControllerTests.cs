@@ -9,7 +9,7 @@ using TestAssignment.Domain.Common.Data;
 using TestAssignment.WebApi.Controllers.TestAssignmentEndpoints;
 using Xunit;
 
-namespace TestAssignment.ApiTests
+namespace TestAssignment.Api.UnitTests
 {
     public class TestAssignmentControllerTests
     {

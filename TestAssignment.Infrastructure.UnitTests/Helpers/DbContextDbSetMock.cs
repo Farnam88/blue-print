@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 
-namespace TestAssignment.InfrastructureTests.Helpers
+namespace TestAssignment.Infrastructure.UnitTests.Helpers
 {
     internal static class DbContextDbSetMock
     {

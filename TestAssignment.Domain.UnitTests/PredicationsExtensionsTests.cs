@@ -3,7 +3,7 @@ using TestAssignment.Domain.Exceptions;
 using TestAssignment.Domain.Extensions;
 using Xunit;
 
-namespace TestAssignment.DomainTests
+namespace TestAssignment.Domain.UnitTests
 {
     public class PredicationsExtensionsTests
     {
