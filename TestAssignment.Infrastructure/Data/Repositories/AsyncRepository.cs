@@ -11,7 +11,7 @@ using TestAssignment.Application.Data.Repositories;
 using TestAssignment.Domain.Common.BaseEntities;
 using TestAssignment.Domain.Extensions;
 
-[assembly: InternalsVisibleTo("TestAssignment.InfrastructureTests")]
+[assembly: InternalsVisibleTo("TestAssignment.Infrastructure.UnitTests")]
 
 namespace TestAssignment.Infrastructure.Data.Repositories
 {

@@ -53,7 +53,7 @@ namespace TestAssignment.Application.Data.Repositories
         /// <returns>Task of Entity</returns>
         Task<TEntity> FirstAsync(ISpecification<TEntity> spec,
             CancellationToken cancellationToken = default);
-        
+
         /// <summary>
         /// Get IList of the Dto object
         /// </summary>

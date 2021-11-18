@@ -1,6 +1,6 @@
 ﻿namespace TestAssignment.Domain.Common
 {
-    public class RangeObject<TLow,TUp>
+    public class RangeObject<TLow, TUp>
     {
         public TLow LowBound { get; set; }
         public TUp UpperBound { get; set; }

@@ -11,6 +11,5 @@ namespace TestAssignment.Application.Contexts.TestAssignmentServices.Commands
                 .NotNull()
                 .MaximumLength(120);
         }
-
     }
 }

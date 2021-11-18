@@ -13,7 +13,7 @@ namespace TestAssignment.Infrastructure.Data.EntitiesConfigurations
             builder.HasKey(k => k.Id);
 
             builder.Property(p => p.Id).IsRequired();
-            
+
             builder.Property(p => p.Title)
                 .HasMaxLength(120)
                 .IsUnicode(false)

@@ -1,9 +1,12 @@
-﻿using TestAssignment.Domain.Common.Enums;
+﻿using System;
+using System.Text.Json.Serialization;
+using TestAssignment.Domain.Common.Enums;
 using TestAssignment.Domain.Exceptions;
 
 #nullable enable
 namespace TestAssignment.Domain.Common.Data
 {
+    [Serializable]
     public class ResultModel<TOutput>
     {
         /// <summary>
@@ -36,11 +39,20 @@ namespace TestAssignment.Domain.Common.Data
             Error = new Error(exception.AdditionalInfo);
         }
 
-        public ErrorCodes ErrorCode { get; }
-        public string Message { get; }
-        public bool IsSucceeded { get; }
-        public TOutput? Result { get; }
-        public Error? Error { get; }
+        public ResultModel(ErrorCodes errorCode, string message, bool isSucceeded, TOutput? result, Error? error)
+        {
+            ErrorCode = errorCode;
+            Message = message;
+            IsSucceeded = isSucceeded;
+            Result = result;
+            Error = error;
+        }
+
+        [JsonPropertyName("errorCode")] public ErrorCodes ErrorCode { get; }
+        [JsonPropertyName("message")] public string Message { get; }
+        [JsonPropertyName("isSucceeded")] public bool IsSucceeded { get; }
+        [JsonPropertyName("result")] public TOutput? Result { get; }
+        [JsonPropertyName("error")] public Error? Error { get; }
 
         /// <summary>
         /// Creates Success Result

@@ -3,7 +3,7 @@ using TestAssignment.Domain.Common.Enums;
 using TestAssignment.Domain.Exceptions;
 using Xunit;
 
-namespace TestAssignment.DomainTests
+namespace TestAssignment.Domain.UnitTests
 {
     public class ResultModelTests
     {

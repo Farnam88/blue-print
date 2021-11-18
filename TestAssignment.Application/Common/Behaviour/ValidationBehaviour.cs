@@ -28,12 +28,12 @@ namespace TestAssignment.Application.Common.Behaviour
 
                 var validationResults =
                     await Task.WhenAll(_validators.Select(v => v.ValidateAsync(context, cancellationToken)));
-                
+
                 var failures = validationResults.SelectMany(r => r.Errors)
                     .Where(f => f != null)
                     .Select(d => new ErrorDetail(d.PropertyName, d.ErrorMessage))
                     .ToList();
-                
+
                 if (failures.Count != 0)
                     throw new InvalidRequestException(info: failures);
             }

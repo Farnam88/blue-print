@@ -24,8 +24,8 @@ namespace TestAssignment.Domain.Common.Data
 
         public ErrorDetail()
         {
-            
         }
+
         public string Key { get; set; }
         public string Value { get; set; }
 

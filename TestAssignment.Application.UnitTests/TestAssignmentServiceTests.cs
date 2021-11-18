@@ -14,7 +14,7 @@ using TestAssignment.Domain.Common.Enums;
 using TestAssignment.Domain.Entities;
 using Xunit;
 
-namespace TestAssignment.ApplicationTest
+namespace TestAssignment.Application.UnitTests
 {
     public class TestAssignmentServiceTests
     {
