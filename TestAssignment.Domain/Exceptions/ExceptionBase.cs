@@ -9,6 +9,7 @@ namespace TestAssignment.Domain.Exceptions
     {
         private readonly IList<ErrorDetail> _additionalInfo;
         private readonly ErrorCodes _errorCode;
+        
 
         protected ExceptionBase(string message, ErrorCodes errorCode,
             IList<ErrorDetail> info = null) : base(message)
