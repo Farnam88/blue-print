@@ -15,7 +15,6 @@
     <ItemGroup>
       <ProjectReference Include="..\TestAssignment.Infrastructure\TestAssignment.Infrastructure.csproj" />
       <ProjectReference Include="..\TestAssignment.Application\TestAssignment.Application.csproj" />
-      <ProjectReference Include="..\TestAssignment.Utilities\TestAssignment.Utilities.csproj" />
     </ItemGroup>
 
 </Project>

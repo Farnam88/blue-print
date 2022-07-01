@@ -6,12 +6,12 @@
 
     <ItemGroup>
       <ProjectReference Include="..\TestAssignment.Application\TestAssignment.Application.csproj" />
-      <ProjectReference Include="..\TestAssignment.Core\TestAssignment.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Ardalis.Specification" Version="5.2.0" />
       <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="5.2.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.17" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
     </ItemGroup>
 

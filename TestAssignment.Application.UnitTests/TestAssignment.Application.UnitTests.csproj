@@ -21,7 +21,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TestAssignment.Core\TestAssignment.Core.csproj" />
       <ProjectReference Include="..\TestAssignment.Application\TestAssignment.Application.csproj" />
     </ItemGroup>
 
