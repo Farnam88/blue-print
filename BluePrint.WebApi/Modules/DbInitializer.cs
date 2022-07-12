@@ -12,25 +12,27 @@ public static class DbInitializer
         using var context = scope.ServiceProvider.GetRequiredService<IDbContext>();
 
         var logger = scope.ServiceProvider.GetRequiredService<ILogger<IDbContext>>();
-
+        var cnl = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+        cnl.Token.ThrowIfCancellationRequested();
         try
         {
             logger.LogInformation("Beginning Migration");
-            
-            var cnl = new CancellationTokenSource();
-            cnl.CancelAfter(20 * 1000);
-            cnl.Token.ThrowIfCancellationRequested();
-            
-            await context.Database.BeginTransactionAsync(cnl.Token);
-            await context.Database.MigrateAsync(cnl.Token);
-            await context.Database.CommitTransactionAsync(cnl.Token);
-            
-            logger.LogInformation("End Migration");
+            if (await context.Database.CanConnectAsync(cnl.Token))
+            {
+                await context.Database.BeginTransactionAsync(cnl.Token);
+                await context.Database.MigrateAsync(cnl.Token);
+                await context.Database.CommitTransactionAsync(cnl.Token);
+                logger.LogInformation("End Migration");
+            }
+            else
+            {
+                logger.LogError("Database does not exist!");
+            }
         }
         catch (Exception e)
         {
-            await context.Database.RollbackTransactionAsync();
-            
+            await context.Database.RollbackTransactionAsync(cnl.Token);
+
             logger.LogError(e.Message, e);
             throw;
         }
