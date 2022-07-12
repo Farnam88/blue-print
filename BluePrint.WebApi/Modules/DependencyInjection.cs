@@ -29,7 +29,7 @@ public static class DependencyInjection
 
         services.AddSwaggerGen(c =>
         {
-            c.SwaggerDoc("v1", new OpenApiInfo {Title = "MapiFesto WebApi", Version = "v1"});
+            c.SwaggerDoc("v1", new OpenApiInfo {Title = "BluePrint WebApi", Version = "v1"});
             c.EnableAnnotations();
         });
 
@@ -38,7 +38,7 @@ public static class DependencyInjection
 
     private static IServiceCollection RegisterDbContext(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<IDbContext, MapiFestoDbContext>(optionBuilder =>
+        services.AddDbContext<IDbContext, BluePrintDbContext>(optionBuilder =>
         {
             
             var databaseName = configuration.GetSection("DbConnection:Default").Value;

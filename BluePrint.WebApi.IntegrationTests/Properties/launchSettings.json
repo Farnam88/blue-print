@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "MapiFesto.WebApi.IntegrationTests": {
+    "BluePrint.WebApi.IntegrationTests": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

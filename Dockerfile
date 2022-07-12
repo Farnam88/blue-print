@@ -16,7 +16,7 @@ WORKDIR /app
 RUN dotnet test --verbosity m
 
 #Pulbish
-WORKDIR /app/MapiFesto.WebApi
+WORKDIR /app/BluePrint.WebApi
 RUN dotnet publish BluePrint.WebApi.csproj -c Release -o /app/out --no-build --no-restore
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final

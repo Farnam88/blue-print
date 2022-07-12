@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BluePrint.WebApi.Migrations
 {
-    [DbContext(typeof(MapiFestoDbContext))]
-    partial class MapiFestoDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(BluePrintDbContext))]
+    partial class BluePrintDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

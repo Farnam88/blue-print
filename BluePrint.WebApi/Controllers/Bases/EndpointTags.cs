@@ -2,7 +2,7 @@ namespace BluePrint.WebApi.Controllers.Bases;
 
 public class EndpointTagNames
 {
-    public const string TestAssignment = "mapi-festo";
+    public const string TestAssignment = "blue-print";
 }
 
 public class EndpointsBaseRouteNames

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BluePrint.WebApi.Migrations
 {
-    [DbContext(typeof(MapiFestoDbContext))]
-    [Migration("20220710135619_v-1.0.0")]
+    [DbContext(typeof(BluePrintDbContext))]
+    [Migration("20220712083404_v-1.0.0")]
     partial class v100
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

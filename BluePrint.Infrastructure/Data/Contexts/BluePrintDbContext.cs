@@ -5,9 +5,9 @@ using BluePrint.Domain.Common.BaseEntities;
 
 namespace BluePrint.Infrastructure.Data.Contexts;
 
-public class MapiFestoDbContext : DbContext, IDbContext
+public class BluePrintDbContext : DbContext, IDbContext
 {
-    public MapiFestoDbContext(DbContextOptions<MapiFestoDbContext> options) : base(options)
+    public BluePrintDbContext(DbContextOptions<BluePrintDbContext> options) : base(options)
     {
     }
 
