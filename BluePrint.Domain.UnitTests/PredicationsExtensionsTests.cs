@@ -19,7 +19,7 @@ namespace BluePrint.Domain.UnitTests
 
             //Act
             if (nullObject)
-                Assert.Throws<ObjectNullException>(() => Preconditions.CheckNull((object) null, name));
+                Assert.Throws<ObjectNullException>(() => Preconditions.CheckNull((object?) null, name));
             if (!nullObject)
                 Preconditions.CheckNull(obj);
         }
